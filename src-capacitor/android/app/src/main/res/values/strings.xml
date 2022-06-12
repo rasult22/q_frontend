@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">q_frontend</string>
+    <string name="title_activity_main">q_frontend</string>
+    <string name="package_name">postify.github.com</string>
+    <string name="custom_url_scheme">postify.github.com</string>
+</resources>
