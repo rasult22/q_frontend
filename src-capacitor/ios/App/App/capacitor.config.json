@@ -1,0 +1,10 @@
+{
+  "appId": "postify.github.com",
+  "appName": "q_frontend",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "server": {
+    "url": "http://192.168.0.16:9500"
+  }
+}

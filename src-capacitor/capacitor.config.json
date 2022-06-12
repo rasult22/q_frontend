@@ -1,0 +1,7 @@
+{
+  "appId": "postify.github.com",
+  "appName": "q_frontend",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
