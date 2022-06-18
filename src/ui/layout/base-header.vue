@@ -6,7 +6,7 @@ import Redo from 'src/icons/redo.vue'
 <template>
   <div class="app-header">
     <div class="app-header__left">
-      <BackArrow width="24" height="24" />
+      <BackArrow width="20" height="20" />
     </div>
     <div class="app-header__center">
       Title
