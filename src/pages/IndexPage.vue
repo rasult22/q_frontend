@@ -17,14 +17,17 @@
           <template #heading-right>
               400 знаков
           </template>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque beatae possimus nesciunt tempore facere nihil consequatur recusandae exercitationem dolores qui, in tempora perspiciatis adipisci at pariatur saepe labore, minima fugit.
+          <BaseTextField v-model="text1" @refresh="alertStuff(text1)" />
+          <BaseTextField v-model="text2" @refresh="alertStuff(text2)"/>
+          <BaseTextField v-model="text3" @refresh="alertStuff(text3)"/>
       </BaseCard>
     </div>
   </q-page>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { shallowRef, ref } from 'vue'
+import BaseTextField from 'src/ui/inputs/base-text-field.vue'
 import BaseCard from 'src/ui/cards/base-card.vue'
 import Alert from 'src/ui/alerts/inline-alert.vue'
 import DiamondIcon from 'src/icons/diamond.vue'
@@ -34,7 +37,10 @@ import TrophyIcon from 'src/icons/trophy.vue'
 // import BaseButton from 'src/ui/buttons/base-button.vue'
 import VerticalTabItem from 'src/ui/vertical-tabs/vertical-tab-item.vue'
 
-const Niches = ref([
+const text1 = ref('А у нас новая услуга!')
+const text2 = ref('Встречайте(наименование процедуры)! \n Время процедуры: (продолжительность процедуры)Инвентарь: (всё, что необходимо для процедуры)Мастер: (мастер процедуры) \n Цена: (цена процедуры) \n После этой процедуры вы будете сиять от удовольствия!')
+const text3 = ref('Спешите записаться! У нас цены действительно ниже обычных.')
+const Niches = shallowRef([
   {
     icon: DiamondIcon,
     title: 'Beauty'
@@ -52,4 +58,5 @@ const Niches = ref([
     title: 'Фитнес'
   }
 ])
+const alertStuff = (stuff: string) => alert(stuff)
 </script>
