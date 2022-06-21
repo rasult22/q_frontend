@@ -1,6 +1,11 @@
 <template>
   <q-page class="row justify-evenly">
-    <div class="full-width q-px-md">
+    <div class="full-width">
+      <LabelImage v-model:text="text1" />
+      <BaseTextField v-model="text1" @refresh="alertStuff(text1)" />
+
+    </div>
+    <div v-if="false" class="full-width q-px-md">
       <Alert>
         Вы можете редактировать или обновить созданный текст
       </Alert>
@@ -26,6 +31,7 @@
 </template>
 
 <script lang="ts" setup>
+import LabelImage from 'src/ui/label-image/label-image.vue'
 import { shallowRef, ref } from 'vue'
 import BaseTextField from 'src/ui/inputs/base-text-field.vue'
 import BaseCard from 'src/ui/cards/base-card.vue'
