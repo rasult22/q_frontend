@@ -1,9 +1,7 @@
 <template>
   <q-page class="row justify-evenly">
     <div class="full-width">
-      <LabelImage v-model:text="text1" />
-      <BaseTextField v-model="text1" @refresh="alertStuff(text1)" />
-
+      <ImageConstructor />
     </div>
     <div v-if="false" class="full-width q-px-md">
       <Alert>
@@ -31,7 +29,7 @@
 </template>
 
 <script lang="ts" setup>
-import LabelImage from 'src/ui/label-image/label-image.vue'
+import ImageConstructor from 'src/features/image-constructor.vue'
 import { shallowRef, ref } from 'vue'
 import BaseTextField from 'src/ui/inputs/base-text-field.vue'
 import BaseCard from 'src/ui/cards/base-card.vue'
