@@ -1,10 +1,25 @@
 <script setup lang="ts">
 import { useVModel } from '@vueuse/core'
-import { ref } from 'vue'
+import { ref, watch, toRefs } from 'vue'
 const props = defineProps<{
-  text: string
+  text: string,
+  mode: 'read' | 'edit'
 }>()
 
+const { mode } = toRefs(props)
+
+const textInput = ref<HTMLElement | null>(null)
+
+const focusOnInput = () => {
+  textInput?.value?.focus()
+}
+// TODO: using `useFocus` detect the focus lose, and turn mode back to read
+// TODO: disable input in read mode
+watch(mode, val => {
+  if (val === 'edit') {
+    focusOnInput()
+  }
+})
 const emit = defineEmits(['update:text'])
 const modelText = useVModel(props, 'text', emit)
 
@@ -14,14 +29,13 @@ const modelText = useVModel(props, 'text', emit)
   <div class="label-image">
     <img class="label-image__img" src="http://www.thedesignwork.com/wp-content/uploads/2011/10/Random-Pictures-of-Conceptual-and-Creative-Ideas-34.jpg" alt="">
     <div class="label-image__text-wrapper">
-      <q-input class="label-image__text" hide-bottom-space dense borderless autogrow v-model="modelText" />
+      <q-input ref="textInput" class="label-image__text" hide-bottom-space dense borderless autogrow v-model="modelText" />
     </div>
     <div class="label-image__text-wrapper label-image__text-wrapper--visible">
       <div class="label-image__text label-image__text--visible">
         {{ text }}
       </div>
     </div>
-    {{ modelText}}
   </div>
 </template>
 
