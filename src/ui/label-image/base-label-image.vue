@@ -1,35 +1,45 @@
 <script setup lang="ts">
-import { useVModel } from '@vueuse/core'
-import { ref, watch, toRefs } from 'vue'
+import { useVModel, useFocusWithin } from '@vueuse/core'
+import { ref, watch, nextTick } from 'vue'
+
 const props = defineProps<{
   text: string,
+  imgSrc: string,
   mode: 'read' | 'edit'
 }>()
 
-const { mode } = toRefs(props)
+const emit = defineEmits(['update:text', 'update:mode'])
+const modelText = useVModel(props, 'text', emit)
+const modelMode = useVModel(props, 'mode', emit)
 
-const textInput = ref<HTMLElement | null>(null)
+const textInput = ref<HTMLElement | null >()
+const { focused: inputIsFocused } = useFocusWithin(textInput)
 
 const focusOnInput = () => {
-  textInput?.value?.focus()
+  nextTick(() => {
+    textInput?.value?.focus()
+  })
 }
-// TODO: using `useFocus` detect the focus lose, and turn mode back to read
-// TODO: disable input in read mode
-watch(mode, val => {
+
+watch(modelMode, val => {
   if (val === 'edit') {
     focusOnInput()
   }
 })
-const emit = defineEmits(['update:text'])
-const modelText = useVModel(props, 'text', emit)
+
+watch(inputIsFocused, val => {
+  if (!val) {
+    modelMode.value = 'read'
+  }
+})
 
 </script>
 
 <template>
   <div class="label-image">
-    <img class="label-image__img" src="http://www.thedesignwork.com/wp-content/uploads/2011/10/Random-Pictures-of-Conceptual-and-Creative-Ideas-34.jpg" alt="">
+    <img class="label-image__img" :src="imgSrc" alt="" />
     <div class="label-image__text-wrapper">
-      <q-input ref="textInput" class="label-image__text" hide-bottom-space dense borderless autogrow v-model="modelText" />
+      <q-input v-show="modelMode === 'edit'" ref="textInput" class="label-image__text" hide-bottom-space dense borderless autogrow v-model="modelText" />
     </div>
     <div class="label-image__text-wrapper label-image__text-wrapper--visible">
       <div class="label-image__text label-image__text--visible">
@@ -37,6 +47,10 @@ const modelText = useVModel(props, 'text', emit)
       </div>
     </div>
   </div>
+  <pre>
+    inputIsFocused: {{ inputIsFocused }} <br/>
+    mode: {{ modelMode }}
+  </pre>
 </template>
 
 <style lang="scss">

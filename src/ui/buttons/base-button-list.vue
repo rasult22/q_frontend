@@ -41,12 +41,12 @@ withDefaults(
 
 <template>
   <div class="button-list">
-    <button v-for="({ icon, text, action }, index) in buttons" @click="action" :key="index" class="button-list__item">
+    <div v-for="({ icon, text, action }, index) in buttons" @click="action" :key="index" class="button-list__item">
         <component :is="icon" />
         <span class="button-list__item-text" >
           {{ text }}
         </span>
-    </button>
+    </div>
   </div>
 </template>
 
