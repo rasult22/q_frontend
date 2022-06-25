@@ -2,18 +2,22 @@
 import BackArrow from 'src/icons/back-arrow.vue'
 import Undo from 'src/icons/undo.vue'
 import Redo from 'src/icons/redo.vue'
+
+import { useHeader } from 'src/composables/useHeader'
+const { undo, redo, title, back, canRedo, canUndo } = useHeader()
+
 </script>
 <template>
   <div class="app-header">
     <div class="app-header__left">
-      <BackArrow width="20" height="20" />
+      <BackArrow @click="back" width="20" height="20" />
     </div>
     <div class="app-header__center">
-      Title
+      {{ title }}
     </div>
     <div class="app-header__right">
-        <Undo disabled width="24" height="24" />
-        <Redo disabled  width="24" height="24" />
+        <Undo @click="undo" :style="`color: ${ canUndo ? '#212121' : '#BDBDBD' };`" width="24" height="24" />
+        <Redo @click="redo" :style="`color: ${ canRedo ? '#212121' : '#BDBDBD' };`" width="24" height="24" />
     </div>
   </div>
 </template>
