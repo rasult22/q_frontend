@@ -3,6 +3,13 @@ import { ref, watch } from 'vue'
 import { useRefHistory } from '@vueuse/core'
 import BaseTextField from 'src/ui/inputs/base-text-field.vue'
 import BaseCard from 'src/ui/cards/base-card.vue'
+import { useHeader } from 'src/composables/useHeader'
+const {
+  undoIt: headerUndo,
+  redoIt: headerRedo,
+  canRedo: headerCanRedo,
+  canUndo: headerCanUndo
+} = useHeader()
 
 const texts = ref({
   text1: {
@@ -19,6 +26,14 @@ const texts = ref({
   }
 })
 const { history, redo, undo, canRedo, canUndo } = useRefHistory(texts, { deep: true, capacity: 100 })
+// Linking header functionality with local refHistory
+headerUndo.value = undo
+headerRedo.value = redo
+
+watch(history, () => {
+  headerCanRedo.value = canRedo.value
+  headerCanUndo.value = canUndo.value
+}, { deep: true })
 
 const changeText = (id: any) => {
   let target = { value: '', id: 0 }
@@ -32,10 +47,6 @@ const changeText = (id: any) => {
     target.value = target.value + ' Some'
   }
 }
-
-watch(texts, () => {
-  console.log(history.value)
-}, { deep: true })
 
 </script>
 
@@ -51,11 +62,4 @@ watch(texts, () => {
     <BaseTextField v-model="texts.text2.value" @refresh="changeText(texts.text2.id)"/>
     <BaseTextField v-model="texts.text3.value" @refresh="changeText(texts.text3.id)"/>
   </BaseCard>
-
-  <button @click="undo">
-    Undo {{ canUndo }}
-  </button>
-  <button @click="redo">
-    Redo {{ canRedo }}
-  </button>
 </template>
