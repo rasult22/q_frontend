@@ -12,7 +12,7 @@ interface HeaderPayload {
   back: () => any
   routerBack: Ref<() => any>,
 }
-const mode = ref<'default'| 'history' | 'final'>('default')
+const mode = ref<'default'| 'history' | 'final' | 'hidden'>('default')
 const title = ref('Title')
 const canUndo = ref(false)
 const canRedo = ref(false)

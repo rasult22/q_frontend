@@ -1,9 +1,9 @@
 <template>
   <q-page class="row justify-evenly">
-    <div v-if="false" class="full-width">
+    <div v-if="true" class="full-width">
       <ImageConstructor />
     </div>
-    <div class="full-width q-px-md">
+    <div v-else class="full-width q-px-md">
       <Alert>
         Вы можете редактировать или обновить созданный текст
       </Alert>

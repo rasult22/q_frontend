@@ -2,7 +2,9 @@
   <q-layout view="lHh Lpr lFf">
     <AppHeader/>
     <q-page-container>
-      <router-view />
+      <q-page class="row justify-evenly">
+        <router-view />
+      </q-page>
     </q-page-container>
   </q-layout>
 </template>
