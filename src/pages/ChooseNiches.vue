@@ -2,6 +2,7 @@
 import Alert from 'src/ui/alerts/inline-alert.vue'
 import { shallowRef } from 'vue'
 import { useHeader } from 'src/composables/useHeader'
+import { useRouter } from 'vue-router'
 // icones
 import DiamondIcon from 'src/icons/diamond.vue'
 import CoctailIcon from 'src/icons/coctail.vue'
@@ -10,6 +11,7 @@ import TrophyIcon from 'src/icons/trophy.vue'
 
 import VerticalTabItem from 'src/ui/vertical-tabs/vertical-tab-item.vue'
 
+const router = useRouter()
 const { mode } = useHeader()
 mode.value = 'hidden'
 
@@ -31,6 +33,11 @@ const niches = shallowRef([
     title: 'Фитнес'
   }
 ])
+
+const onClick = () => {
+  // TODO: write saving logic
+  router.push('/choose-contents')
+}
 </script>
 <template>
   <div class="full-width q-px-md">
@@ -40,7 +47,7 @@ const niches = shallowRef([
     <Alert>
       Контент будет подстраиваться под вашу нишу
     </Alert>
-    <VerticalTabItem  class="q-mt-md" v-for="(niche, index) in niches" :key="index">
+    <VerticalTabItem @click="onClick" class="q-mt-md" v-for="(niche, index) in niches" :key="index">
       <template #icon>
           <component :is="niche.icon" width="24" height="24" />
       </template>
