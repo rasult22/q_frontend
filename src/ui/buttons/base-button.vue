@@ -2,8 +2,29 @@
 </script>
 
 <template>
-  <q-btn style="background: #FF4081; color: white; text-transform: none;" rounded>
+  <button  class="base-button">
     <slot>
     </slot>
-  </q-btn>
+  </button>
 </template>
+
+<style lang="scss" scoped>
+  .base-button {
+    width: 100%;
+    padding: 12px 0;
+    background-color: #FF4081;
+    color: white;
+    border-radius: 12px;
+    border: none;
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 27px;
+    letter-spacing: 0em;
+    text-align: center;
+    &:active, &:focus {
+      border: none;
+      outline: none;
+    }
+  }
+</style>
