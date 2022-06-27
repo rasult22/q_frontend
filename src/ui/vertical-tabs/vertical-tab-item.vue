@@ -1,9 +1,12 @@
 <script setup>
 import ForwardArrowIcon from 'src/icons/forward-arrow.vue'
+import { useSlots } from 'vue'
+const slots = useSlots()
+
 </script>
 <template>
   <div class="vertical-tab-item">
-    <div class="vertical-tab-item__left">
+    <div v-if="slots.icon" class="vertical-tab-item__left">
       <slot name="icon">
       </slot>
     </div>
@@ -27,6 +30,7 @@ import ForwardArrowIcon from 'src/icons/forward-arrow.vue'
   &__left {
     display: flex;
     align-items: center;
+    margin-right: 16px;
   }
   &__center {
     font-family: Roboto;
@@ -36,7 +40,6 @@ import ForwardArrowIcon from 'src/icons/forward-arrow.vue'
     line-height: 24px;
     letter-spacing: 0em;
     text-align: left;
-    margin-left: 16px;
     margin-right: auto;
   }
   &__right {}
