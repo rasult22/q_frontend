@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useVModel, useFocusWithin } from '@vueuse/core'
-import { ref, watch, nextTick } from 'vue'
+import { ref, watch, nextTick, computed } from 'vue'
 
 const props = defineProps<{
   text: string,
@@ -33,6 +33,11 @@ watch(inputIsFocused, val => {
   }
 })
 
+const getStyle = computed(() => {
+  // TODO: Add background color changing behavior
+  return ''
+})
+
 </script>
 
 <template>
@@ -42,15 +47,11 @@ watch(inputIsFocused, val => {
       <q-input v-show="modelMode === 'edit'" ref="textInput" class="label-image__text" hide-bottom-space dense borderless autogrow v-model="modelText" />
     </div>
     <div class="label-image__text-wrapper label-image__text-wrapper--visible">
-      <div class="label-image__text label-image__text--visible">
+      <div class="label-image__text label-image__text--visible" :style="getStyle">
         {{ text }}
       </div>
     </div>
   </div>
-  <pre>
-    inputIsFocused: {{ inputIsFocused }} <br/>
-    mode: {{ modelMode }}
-  </pre>
 </template>
 
 <style lang="scss">
