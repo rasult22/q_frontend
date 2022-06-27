@@ -2,10 +2,12 @@
 </script>
 
 <template>
-  <button  class="base-button">
-    <slot>
-    </slot>
-  </button>
+  <div class="base-button__wrapper">
+    <button class="base-button">
+      <slot>
+      </slot>
+    </button>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -22,6 +24,10 @@
     line-height: 27px;
     letter-spacing: 0em;
     text-align: center;
+    &__wrapper {
+      padding: 20px 16px;
+      width: 100%;
+    }
     &:active, &:focus {
       border: none;
       outline: none;
