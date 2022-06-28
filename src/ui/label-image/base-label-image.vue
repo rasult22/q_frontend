@@ -58,6 +58,8 @@ const getStyle = computed(() => {
 .label-image {
   display: flex;
   position: relative;
+  width: 100vw;
+  height: 100vw;
   &__img {
     width: 100%;
   }

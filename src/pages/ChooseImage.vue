@@ -16,7 +16,7 @@ const onClick = () => {
 </script>
 <template>
     <div class="full-width choose-image">
-      <ImageConstructor />
+      <ImageConstructor imageMode="edit" />
        <BaseButton @click="onClick" class="choose-image__btn">
           К предпросмотру
       </BaseButton>

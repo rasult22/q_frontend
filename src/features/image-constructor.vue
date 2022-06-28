@@ -12,6 +12,11 @@ const {
   canRedo: headerCanRedo,
   canUndo: headerCanUndo
 } = useHeader()
+withDefaults(defineProps<{
+  imageMode: 'edit' | 'read'
+ }>(), {
+  imageMode: 'edit'
+})
 
 const labelImageData = ref({
   text1: 'Default Title',
@@ -51,6 +56,6 @@ const buttons = shallowRef([
 <template>
   <div>
     <LabelImage v-model:mode="mode" :imgSrc="labelImageData.imgSrc" v-model:text="labelImageData.text1" />
-    <BaseButtonList :buttons="buttons" />
+    <BaseButtonList v-show="imageMode === 'edit'" :buttons="buttons" />
   </div>
 </template>
