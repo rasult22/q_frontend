@@ -1,7 +1,7 @@
 import { ref, Ref } from 'vue'
 
 interface HeaderPayload {
-  mode: Ref<'default'| 'history' | 'final'>,
+  mode: Ref<'hidden' | 'default'| 'history' | 'final'>,
   title: Ref<string>,
   canUndo: Ref<boolean>,
   canRedo: Ref<boolean>,
