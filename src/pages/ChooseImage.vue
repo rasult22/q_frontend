@@ -4,8 +4,9 @@ import ImageConstructor from 'src/features/image-constructor.vue'
 import { useRouter } from 'vue-router'
 import { useHeader } from 'src/composables/useHeader'
 const router = useRouter()
-const { title, routerBack } = useHeader()
+const { title, routerBack, mode: headerMode } = useHeader()
 title.value = ''
+headerMode.value = 'history'
 routerBack.value = () => {
   router.push('/generate-text')
 }

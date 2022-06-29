@@ -5,8 +5,9 @@ import BaseButton from 'src/ui/buttons/base-button.vue'
 import { useRouter } from 'vue-router'
 import { useHeader } from 'src/composables/useHeader'
 const router = useRouter()
-const { title, routerBack } = useHeader()
+const { title, routerBack, mode: headerMode } = useHeader()
 title.value = ''
+headerMode.value = 'history'
 routerBack.value = () => {
   router.push('/choose-rubrics')
 }

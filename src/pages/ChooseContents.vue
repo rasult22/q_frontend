@@ -12,7 +12,9 @@ import QuestionIcon from 'src/icons/question.vue'
 import GamepadIcon from 'src/icons/Gamepad.vue'
 import ChatIcon from 'src/icons/chat.vue'
 const router = useRouter()
-const { title, routerBack } = useHeader()
+const { title, routerBack, mode: headerMode } = useHeader()
+title.value = 'Тип контента'
+headerMode.value = 'default'
 const contents = shallowRef([
   {
     icon: BagIcon,
@@ -39,7 +41,6 @@ const contents = shallowRef([
     title: 'Пост-знакомство'
   }
 ])
-title.value = 'Тип контента'
 routerBack.value = () => {
   router.push('/choose-niches')
 }

@@ -33,7 +33,7 @@ headerRedo.value = redo
 watch(history, () => {
   headerCanRedo.value = canRedo.value
   headerCanUndo.value = canUndo.value
-}, { deep: true })
+}, { deep: true, immediate: true })
 
 const changeText = (id: any) => {
   let target = { value: '', id: 0 }

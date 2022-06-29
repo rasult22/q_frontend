@@ -12,8 +12,8 @@ import TrophyIcon from 'src/icons/trophy.vue'
 import VerticalTabItem from 'src/ui/vertical-tabs/vertical-tab-item.vue'
 
 const router = useRouter()
-const { mode } = useHeader()
-mode.value = 'hidden'
+const { mode: headerMode } = useHeader()
+headerMode.value = 'hidden'
 
 const niches = shallowRef([
   {
