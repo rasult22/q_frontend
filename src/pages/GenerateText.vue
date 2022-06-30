@@ -34,7 +34,7 @@ const onClick = () => {
     &__btn {
       display: block;
       position: fixed;
-      bottom: 0;
+      bottom: 25px;
       left: 0;
       z-index: 1;
     }

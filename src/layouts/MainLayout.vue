@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr lFf" style="padding-top: 35px; padding-bottom: 35px">
     <AppHeader/>
     <q-page-container>
       <q-page class="row justify-evenly">
@@ -15,6 +15,7 @@
 
 <script setup lang="ts">
 import AppHeader from 'src/ui/layout/base-header.vue'
+
 </script>
 
 <style>

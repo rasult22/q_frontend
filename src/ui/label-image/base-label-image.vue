@@ -41,8 +41,8 @@ const getStyle = computed(() => {
 </script>
 
 <template>
-  <div class="label-image">
-    <img class="label-image__img" :src="imgSrc" alt="" />
+  <div class="label-image" :style="`background-image: url(${imgSrc})`">
+    <!-- <img class="label-image__img" :src="imgSrc" alt="" /> -->
     <div class="label-image__text-wrapper">
       <q-input v-show="modelMode === 'edit'" ref="textInput" class="label-image__text" hide-bottom-space dense borderless autogrow v-model="modelText" />
     </div>
@@ -59,6 +59,9 @@ const getStyle = computed(() => {
   display: flex;
   position: relative;
   width: 100vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   height: 100vw;
   &__img {
     width: 100%;

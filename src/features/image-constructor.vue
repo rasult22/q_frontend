@@ -20,7 +20,7 @@ withDefaults(defineProps<{
 
 const labelImageData = ref({
   text1: 'Default Title',
-  imgSrc: 'http://www.thedesignwork.com/wp-content/uploads/2011/10/Random-Pictures-of-Conceptual-and-Creative-Ideas-34.jpg'
+  imgSrc: 'https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2787&q=80'
 })
 
 const { history, redo, undo, canRedo, canUndo } = useDebouncedRefHistory(labelImageData, { deep: true, capacity: 100, debounce: 500 })
